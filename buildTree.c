@@ -42,3 +42,18 @@ void makeChildren( Node *parent ) {
   return;
 }
 
+//  visit every leaf node in the tree and add children.
+
+void growtree( Node *head) {
+	if (head->child[0] != NULL)
+		growtree(head->child[0]);
+	if (head->child[1] != NULL)
+		growtree(head->child[1]);
+	if (head->child[2] != NULL)
+		growtree(head->child[2]);
+	if (head->child[3] != NULL)
+		growtree(head->child[3]);
+	if (head->child[0] == NULL && head->child[1] == NULL && head->child[2] == NULL && head->child[3] == NULL)
+		makeChildren(head);
+}
+
