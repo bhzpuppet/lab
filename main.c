@@ -14,12 +14,15 @@ int main( int argc, char **argv ) {
   head = makeNode( 0.0,0.0, 0 );
 
   // make a tree
-  makeChildren( head );
+
   
   growtree (head);
-  
+
+  makeChildren(head->child[0]);
+  	destroyTree(head);
   // print the tree for Gnuplot
 	writeTree( head );
+
 
   return 0;
 }
