@@ -57,7 +57,7 @@ void growtree( Node *head) {
 		makeChildren(head);
 }
 
-// destroy
+// destroy tree
 
 void destroyTree(Node *head) {
 	int i;
@@ -66,4 +66,14 @@ void destroyTree(Node *head) {
     		destroyTree(head->child[i]);
 		free(head);
 	}
+}
+
+// remove children
+
+void removeChildren( Node *parent ){
+	int i;
+	for( i=0;i<4;++i )
+    free(parent->child[i]);
+	for( i=0;i<4;++i )
+    parent->child[i] = NULL;
 }
