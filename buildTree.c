@@ -102,7 +102,7 @@ int add_num = 0, remove_num = 0;
 void change (Node *head){
 	calculate(head);
 	add_remove(head);
-	printf("add:%d remove:%d",add_num,remove_num);
+	printf("add:%d remove:%d\n",add_num,remove_num);
 }
 
 //give flag value
@@ -146,5 +146,5 @@ void add_remove (Node *head) {
 }
 // auto change
 void adapt( Node *head ) {
-	
+	return;
 }
