@@ -98,7 +98,8 @@ double value( double x, double y, double time ) {
 }
 
 //change
-int add_num = 0, remove_num = 0;
+int add_num = 0;
+int remove_num = 0;
 void change (Node *head){
 	calculate(head);
 	add_remove(head);
@@ -130,7 +131,6 @@ void add_remove (Node *head) {
 			makeChildren(head);
 			add_num = add_num + 4;
 		}
-	
 	}
 	else{
 		if (head->child[0]->flag == -1 && head->child[1]->flag == -1 && head->child[2]->flag == -1 && head->child[3]->flag == -1){
@@ -142,9 +142,40 @@ void add_remove (Node *head) {
 			add_remove(head->child[i]);
 		}
 	}
-	
 }
 // auto change
 void adapt( Node *head ) {
-	return;
+	calculate(head);
+	add_remove_limit(head);
+	printf("add:%d remove:%d\n",add_num,remove_num);
+	while (1){
+		if(add_num == 0 || remove_num == 0){
+			break;
+		}
+		add_num = 0;
+		remove_num = 0;
+		calculate(head);
+		add_remove_limit(head);
+		printf("add:%d remove:%d\n",add_num,remove_num);
+	}
+}
+
+void add_remove_limit( Node *head){
+	int i;
+	if (head->child[0] == NULL){
+		if ( head->flag == 1 && head->level <6){
+			makeChildren(head);
+			add_num = add_num + 4;
+		}
+	}
+	else{
+		if (head->child[0]->flag == -1 && head->child[1]->flag == -1 && head->child[2]->flag == -1 && head->child[3]->flag == -1){
+			removeChildren(head);
+			remove_num = remove_num + 4;
+		}
+		else {
+			for( i=0;i<4;++i )
+			add_remove(head->child[i]);
+		}
+	}
 }

@@ -18,9 +18,8 @@ int main( int argc, char **argv ) {
   growtree (head);
   growtree (head);
   growtree (head);
-  change(head);
-  change(head);
-  //change(head);
+  adapt(head);
+  
   // print the tree for Gnuplot
 	writeTree( head );
 	destroyTree(head);

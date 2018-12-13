@@ -13,4 +13,5 @@ void change (Node *head);
 void calculate (Node *head);
 void add_remove (Node *head); 
 void adapt( Node *head );
+void add_remove_limit( Node *head);
 #endif
