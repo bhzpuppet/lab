@@ -16,11 +16,11 @@ int main( int argc, char **argv ) {
   // make a tree
 
   growtree (head);
-  makeChildren(head->child[0]);
-  makeChildren(head->child[1]);
-  removeChildren (head->child[0]);
-  
-	
+  growtree (head);
+  growtree (head);
+  change(head);
+
+  //change(head);
   // print the tree for Gnuplot
 	writeTree( head );
 	destroyTree(head);
