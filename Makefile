@@ -1,35 +1,14 @@
+main: main.o buildTree.o writeTree.o
+	gcc -lm -o main main.o buildTree.o writeTree.o
 
-# code details
+main.o: main.c treestructure.h buildTree.h writeTree.h
+	gcc -lm -c main.c
 
-EXE_DIR = .
-EXE = $(EXE_DIR)/basicQuadtree
+buildTree.o: buildTree.c treestructure.h
+	gcc -lm -c buildTree.c
 
-SRC= basicQuadtree.c
-
-# generic build details
-
-CC=      cc
-COPT=    -g
-CFLAGS= -lm
-
-# compile to  object code
-
-OBJ= $(SRC:.c=.o)
-
-.c.o:
-	$(CC) $(COPT) -c -o $@ $<
-
-# build executable
-
-$(EXE): $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o $(EXE) 
-
-# clean up compilation
+writeTree.o: writeTree.c treestructure.h
+	gcc -lm -c writeTree.c
 
 clean:
-	rm -f $(OBJ) $(EXE)
-
-# dependencies
-
-basicQuadtree.o:  basicQuadtree.c 
-
+	-rm -f main.o buildTree.o writeTree.o
